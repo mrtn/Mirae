@@ -1,0 +1,662 @@
+{
+  "default": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "LittleLink",
+    "icon": "images/icons/littlelink.svg"
+  },
+  "amazon": {
+    "platform": "amazon",
+    "class": "button button-amazon",
+    "button": "Amazon Wishlist",
+    "icon": "images/icons/amazon.svg"
+  },
+  "amazon-music": {
+    "platform": "amazon-music",
+    "class": "button button-amazon-music",
+    "button": "Listen on Amazon Music",
+    "icon": "images/icons/amazon-music.svg"
+  },
+  "appstore": {
+    "platform": "appstore",
+    "class": "button button-appstore",
+    "button": "Apple App Store",
+    "icon": "images/icons/apple.svg"
+  },
+  "invites": {
+    "platform": "invites",
+    "class": "button button-invites",
+    "button": "Apple Invites",
+    "icon": "images/icons/apple-invites.svg"
+  },
+  "apple-music": {
+    "platform": "apple-music",
+    "class": "button button-apple-music",
+    "button": "Listen on Apple Music",
+    "icon": "images/icons/apple-music.svg"
+  },
+  "apple-music-alt": {
+    "platform": "apple-music-alt",
+    "class": "button button-apple-music-alt",
+    "button": "Listen on Apple Music",
+    "icon": "images/icons/apple-music-alt.svg"
+  },
+  "apple-podcasts": {
+    "platform": "apple-podcasts",
+    "class": "button button-apple-podcasts",
+    "button": "Listen on Apple Podcasts",
+    "icon": "images/icons/apple-podcasts.svg"
+  },
+  "apple-podcasts-alt": {
+    "platform": "apple-podcasts-alt",
+    "class": "button button-apple-podcasts-alt",
+    "button": "Listen on Apple Podcasts",
+    "icon": "images/icons/apple-podcasts-alt.svg"
+  },
+  "bandcamp": {
+    "platform": "bandcamp",
+    "class": "button button-bandcamp",
+    "button": "Bandcamp",
+    "icon": "images/icons/bandcamp.svg"
+  },
+  "behance": {
+    "platform": "behance",
+    "class": "button button-behance",
+    "button": "Behance",
+    "icon": "images/icons/behance.svg"
+  },
+  "bluesky": {
+    "platform": "bluesky",
+    "class": "button button-bluesky",
+    "button": "Bluesky",
+    "icon": "images/icons/bluesky.svg"
+  },
+  "bluesky-alt": {
+    "platform": "bluesky-alt",
+    "class": "button button-bluesky-alt",
+    "button": "Bluesky",
+    "icon": "images/icons/bluesky-alt.svg"
+  },
+  "coffee": {
+    "platform": "coffee",
+    "class": "button button-coffee",
+    "button": "Buy Me A Coffee",
+    "icon": "images/icons/buy-me-a-coffee.svg"
+  },
+  "cal": {
+    "platform": "cal",
+    "class": "button button-cal",
+    "button": "Schedule with Cal.com",
+    "icon": "images/icons/cal.svg"
+  },
+  "calendly": {
+    "platform": "calendly",
+    "class": "button button-calendly",
+    "button": "Schedule with Calendly",
+    "icon": "images/icons/calendly.svg"
+  },
+  "cash-app": {
+    "platform": "cash-app",
+    "class": "button button-cash-app",
+    "button": "Cash App",
+    "icon": "images/icons/cash-app-dollar.svg"
+  },
+  "dev-to": {
+    "platform": "dev-to",
+    "class": "button button-dev-to",
+    "button": "Dev.to",
+    "icon": "images/icons/dev-to.svg"
+  },
+  "discogs": {
+    "platform": "discogs",
+    "class": "button button-discogs",
+    "button": "Discogs",
+    "icon": "images/icons/discogs.svg"
+  },
+  "discogs-alt": {
+    "platform": "discogs-alt",
+    "class": "button button-discogs-alt",
+    "button": "Discogs",
+    "icon": "images/icons/discogs-alt.svg"
+  },
+  "discord": {
+    "platform": "discord",
+    "class": "button button-discord",
+    "button": "Discord",
+    "icon": "images/icons/discord.svg"
+  },
+  "dribbble": {
+    "platform": "dribbble",
+    "class": "button button-dribbble",
+    "button": "Dribbble",
+    "icon": "images/icons/dribbble.svg"
+  },
+  "etsy": {
+    "platform": "etsy",
+    "class": "button button-etsy",
+    "button": "Shop on Etsy",
+    "icon": "images/icons/etsy.svg"
+  },
+  "facebook": {
+    "platform": "facebook",
+    "class": "button button-faceb",
+    "button": "Find us on Facebook",
+    "icon": "images/icons/facebook.svg"
+  },
+  "messenger": {
+    "platform": "messenger",
+    "class": "button button-messenger",
+    "button": "Chat on Messenger",
+    "icon": "images/icons/messenger.svg"
+  },
+  "figma": {
+    "platform": "figma",
+    "class": "button button-figma",
+    "button": "Figma Community",
+    "icon": "images/icons/figma.svg"
+  },
+  "fiverr": {
+    "platform": "fiverr",
+    "class": "button button-fiverr",
+    "button": "Fiverr Gig",
+    "icon": "images/icons/fiverr.svg"
+  },
+  "flickr": {
+    "platform": "flickr",
+    "class": "button button-flickr",
+    "button": "Flickr",
+    "icon": "images/icons/flickr.svg"
+  },
+  "github": {
+    "platform": "github",
+    "class": "button button-github",
+    "button": "GitHub",
+    "icon": "images/icons/github.svg"
+  },
+  "gitlab": {
+    "platform": "gitlab",
+    "class": "button button-gitlab",
+    "button": "GitLab",
+    "icon": "images/icons/gitlab.svg"
+  },
+  "gofundme": {
+    "platform": "gofundme",
+    "class": "button button-gofundme",
+    "button": "GoFundMe",
+    "icon": "images/icons/gofundme.svg"
+  },
+  "goodreads": {
+    "platform": "goodreads",
+    "class": "button button-goodreads",
+    "button": "Goodreads",
+    "icon": "images/icons/goodreads.svg"
+  },
+  "google-black": {
+    "platform": "google-black",
+    "class": "button button-google-black",
+    "button": "View in Google Drive",
+    "icon": "images/icons/google-drive.svg"
+  },
+  "playstore": {
+    "platform": "playstore",
+    "class": "button button-playstore",
+    "button": "Google Play Store",
+    "icon": "images/icons/google-play.svg"
+  },
+  "google-scholar": {
+    "platform": "google-scholar",
+    "class": "button button-google-scholar",
+    "button": "Google Scholar",
+    "icon": "images/icons/google-scholar.svg"
+  },
+  "hashnode": {
+    "platform": "hashnode",
+    "class": "button button-hashnode",
+    "button": "Hashnode",
+    "icon": "images/icons/hashnode.svg"
+  },
+  "instagram": {
+    "platform": "instagram",
+    "class": "button button-instagram",
+    "button": "Instagram",
+    "icon": "images/icons/instagram.svg"
+  },
+  "kick": {
+    "platform": "kick",
+    "class": "button button-kick",
+    "button": "Kick",
+    "icon": "images/icons/kick.svg"
+  },
+  "kick-alt": {
+    "platform": "kick-alt",
+    "class": "button button-kick-alt",
+    "button": "Kick",
+    "icon": "images/icons/kick-alt.svg"
+  },
+  "kickstarter": {
+    "platform": "kickstarter",
+    "class": "button button-kickstarter",
+    "button": "Kickstarter",
+    "icon": "images/icons/kickstarter.svg"
+  },
+  "kit": {
+    "platform": "kit",
+    "class": "button button-kit",
+    "button": "Kit",
+    "icon": "images/icons/kit.svg"
+  },
+  "ko-fi": {
+    "platform": "ko-fi",
+    "class": "button button-ko-fi",
+    "button": "Support me on Ko-fi",
+    "icon": "images/icons/ko-fi.svg"
+  },
+  "last-fm": {
+    "platform": "last-fm",
+    "class": "button button-last-fm",
+    "button": "Last.fm",
+    "icon": "images/icons/last-fm.svg"
+  },
+  "letterboxd": {
+    "platform": "letterboxd",
+    "class": "button button-letterboxd",
+    "button": "Letterboxd",
+    "icon": "images/icons/letterboxd.svg"
+  },
+  "line": {
+    "platform": "line",
+    "class": "button button-line",
+    "button": "Line",
+    "icon": "images/icons/line.svg"
+  },
+  "linked": {
+    "platform": "linked",
+    "class": "button button-linked",
+    "button": "LinkedIn",
+    "icon": "images/icons/linkedin.svg"
+  },
+  "mailchimp": {
+    "platform": "mailchimp",
+    "class": "button button-mailchimp",
+    "button": "Mailchimp",
+    "icon": "images/icons/mailchimp.svg"
+  },
+  "mastodon": {
+    "platform": "mastodon",
+    "class": "button button-mastodon",
+    "button": "Mastodon",
+    "icon": "images/icons/mastodon.svg"
+  },
+  "matrix": {
+    "platform": "matrix",
+    "class": "button button-matrix",
+    "button": "Matrix",
+    "icon": "images/icons/matrix.svg"
+  },
+  "medium": {
+    "platform": "medium",
+    "class": "button button-medium",
+    "button": "Medium",
+    "icon": "images/icons/medium.svg"
+  },
+  "meetup": {
+    "platform": "meetup",
+    "class": "button button-meetup",
+    "button": "Meetup",
+    "icon": "images/icons/meetup.svg"
+  },
+  "meetup-alt": {
+    "platform": "meetup-alt",
+    "class": "button button-meetup-alt",
+    "button": "Meetup",
+    "icon": "images/icons/meetup-alt.svg"
+  },
+  "microsoft": {
+    "platform": "microsoft",
+    "class": "button button-microsoft",
+    "button": "Get it from Microsoft",
+    "icon": "images/icons/microsoft.svg"
+  },
+  "notion": {
+    "platform": "notion",
+    "class": "button button-notion",
+    "button": "Notion",
+    "icon": "images/icons/notion.svg"
+  },
+  "obsidian": {
+    "platform": "obsidian",
+    "class": "button button-obsidian",
+    "button": "Obsidian",
+    "icon": "images/icons/obsidian.svg"
+  },
+  "onlyfans": {
+    "platform": "onlyfans",
+    "class": "button button-onlyfans",
+    "button": "OnlyFans (18+)",
+    "icon": "images/icons/onlyfans.svg"
+  },
+  "patreon": {
+    "platform": "patreon",
+    "class": "button button-patreon",
+    "button": "Patreon",
+    "icon": "images/icons/patreon.svg"
+  },
+  "paypal": {
+    "platform": "paypal",
+    "class": "button button-paypal",
+    "button": "PayPal",
+    "icon": "images/icons/paypal.svg"
+  },
+  "pinterest": {
+    "platform": "pinterest",
+    "class": "button button-pinterest",
+    "button": "Pinterest",
+    "icon": "images/icons/pinterest.svg"
+  },
+  "product-hunt": {
+    "platform": "product-hunt",
+    "class": "button button-product-hunt",
+    "button": "Product Hunt",
+    "icon": "images/icons/product-hunt.svg"
+  },
+  "reddit": {
+    "platform": "reddit",
+    "class": "button button-reddit",
+    "button": "Reddit",
+    "icon": "images/icons/reddit.svg"
+  },
+  "shop": {
+    "platform": "shop",
+    "class": "button button-shop",
+    "button": "Buy with Shop",
+    "icon": "images/icons/shop.svg"
+  },
+  "signal": {
+    "platform": "signal",
+    "class": "button button-signal",
+    "button": "Signal",
+    "icon": "images/icons/signal.svg"
+  },
+  "signal-alt": {
+    "platform": "signal-alt",
+    "class": "button button-signal-alt",
+    "button": "Signal",
+    "icon": "images/icons/signal-alt.svg"
+  },
+  "slack": {
+    "platform": "slack",
+    "class": "button button-slack",
+    "button": "Join Slack",
+    "icon": "images/icons/slack.svg"
+  },
+  "snapchat": {
+    "platform": "snapchat",
+    "class": "button button-snapchat",
+    "button": "Snapchat",
+    "icon": "images/icons/snapchat.svg"
+  },
+  "soundcloud": {
+    "platform": "soundcloud",
+    "class": "button button-soundcloud",
+    "button": "SoundCloud",
+    "icon": "images/icons/soundcloud.svg"
+  },
+  "spotify": {
+    "platform": "spotify",
+    "class": "button button-spotify",
+    "button": "Listen on Spotify",
+    "icon": "images/icons/spotify.svg"
+  },
+  "spotify-alt": {
+    "platform": "spotify-alt",
+    "class": "button button-spotify-alt",
+    "button": "Listen on Spotify",
+    "icon": "images/icons/spotify-alt.svg"
+  },
+  "square": {
+    "platform": "square",
+    "class": "button button-square",
+    "button": "Buy with Square",
+    "icon": "images/icons/square.svg"
+  },
+  "stack-overflow": {
+    "platform": "stack-overflow",
+    "class": "button button-stack-overflow",
+    "button": "Stack Overflow",
+    "icon": "images/icons/stack-overflow.svg"
+  },
+  "steam": {
+    "platform": "steam",
+    "class": "button button-steam",
+    "button": "Steam",
+    "icon": "images/icons/steam.svg"
+  },
+  "steam-alt": {
+    "platform": "steam-alt",
+    "class": "button button-steam-alt",
+    "button": "Steam",
+    "icon": "images/icons/steam.svg"
+  },
+  "strava": {
+    "platform": "strava",
+    "class": "button button-strava",
+    "button": "Strava",
+    "icon": "images/icons/strava.svg"
+  },
+  "substack": {
+    "platform": "substack",
+    "class": "button button-substack",
+    "button": "Substack",
+    "icon": "images/icons/substack.svg"
+  },
+  "telegram": {
+    "platform": "telegram",
+    "class": "button button-telegram",
+    "button": "Telegram",
+    "icon": "images/icons/telegram.svg"
+  },
+  "threads": {
+    "platform": "threads",
+    "class": "button button-threads",
+    "button": "Threads",
+    "icon": "images/icons/threads.svg"
+  },
+  "threema": {
+    "platform": "threema",
+    "class": "button button-threema",
+    "button": "Threema",
+    "icon": "images/icons/threema.svg"
+  },
+  "tiktok": {
+    "platform": "tiktok",
+    "class": "button button-tiktok",
+    "button": "TikTok",
+    "icon": "images/icons/tiktok.svg"
+  },
+  "trello": {
+    "platform": "trello",
+    "class": "button button-trello",
+    "button": "Trello",
+    "icon": "images/icons/trello.svg"
+  },
+  "tumb": {
+    "platform": "tumb",
+    "class": "button button-tumb",
+    "button": "Tumblr",
+    "icon": "images/icons/tumblr.svg"
+  },
+  "twitch": {
+    "platform": "twitch",
+    "class": "button button-twitch",
+    "button": "Twitch",
+    "icon": "images/icons/twitch.svg"
+  },
+  "unsplash": {
+    "platform": "unsplash",
+    "class": "button button-unsplash",
+    "button": "Unsplash",
+    "icon": "images/icons/unsplash.svg"
+  },
+  "venmo": {
+    "platform": "venmo",
+    "class": "button button-venmo",
+    "button": "Venmo",
+    "icon": "images/icons/venmo.svg"
+  },
+  "vimeo": {
+    "platform": "vimeo",
+    "class": "button button-vimeo",
+    "button": "Vimeo",
+    "icon": "images/icons/vimeo.svg"
+  },
+  "vsco": {
+    "platform": "vsco",
+    "class": "button button-vsco",
+    "button": "VSCO",
+    "icon": "images/icons/vsco.svg"
+  },
+  "whatsapp": {
+    "platform": "whatsapp",
+    "class": "button button-whatsapp",
+    "button": "WhatsApp",
+    "icon": "images/icons/whatsapp.svg"
+  },
+  "wordpress": {
+    "platform": "wordpress",
+    "class": "button button-wordpress",
+    "button": "WordPress",
+    "icon": "images/icons/wordpress.svg"
+  },
+  "x": {
+    "platform": "x",
+    "class": "button button-x",
+    "button": "Follow on X",
+    "icon": "images/icons/x.svg"
+  },
+  "yt": {
+    "platform": "yt",
+    "class": "button button-yt",
+    "button": "YouTube",
+    "icon": "images/icons/youtube.svg"
+  },
+  "yt-alt": {
+    "platform": "yt-alt",
+    "class": "button button-yt-alt",
+    "button": "YouTube",
+    "icon": "images/icons/youtube-alt.svg"
+  },
+  "yt-2": {
+    "platform": "yt",
+    "class": "button button-yt",
+    "button": "Listen on YouTube Music",
+    "icon": "images/icons/youtube-music.svg"
+  },
+  "zoom": {
+    "platform": "zoom",
+    "class": "button button-zoom",
+    "button": "Join Zoom Webinar",
+    "icon": "images/icons/zoom.svg"
+  },
+  "default-2": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Read our blog",
+    "icon": "images/icons/generic-blog.svg"
+  },
+  "default-3": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Event RSVP",
+    "icon": "images/icons/generic-calendar.svg"
+  },
+  "default-4": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Download File",
+    "icon": "images/icons/generic-cloud.svg"
+  },
+  "default-5": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "View the code",
+    "icon": "images/icons/generic-code.svg"
+  },
+  "default-6": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Homelab Setup",
+    "icon": "images/icons/generic-computer.svg"
+  },
+  "default-7": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Email Us",
+    "icon": "images/icons/generic-email.svg"
+  },
+  "default-8": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Email Us",
+    "icon": "images/icons/generic-email-alt.svg"
+  },
+  "default-9": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Visit Homepage",
+    "icon": "images/icons/generic-homepage.svg"
+  },
+  "default-10": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Get Directions",
+    "icon": "images/icons/generic-map.svg"
+  },
+  "default-11": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Call Us",
+    "icon": "images/icons/generic-phone.svg"
+  },
+  "default-12": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Leave us a review",
+    "icon": "images/icons/generic-review.svg"
+  },
+  "default-13": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "RSS Subscribe",
+    "icon": "images/icons/generic-rss.svg"
+  },
+  "default-14": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Visit Our Shop",
+    "icon": "images/icons/generic-shopping-bag.svg"
+  },
+  "default-15": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "10% Discount",
+    "icon": "images/icons/generic-shopping-tag.svg"
+  },
+  "default-16": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Send us a message",
+    "icon": "images/icons/generic-sms.svg"
+  },
+  "default-17": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "Visit Website",
+    "icon": "images/icons/generic-website.svg"
+  },
+  "default-18": {
+    "platform": "default",
+    "class": "button button-default",
+    "button": "LittleLink Extended",
+    "icon": "images/icons/littlelink.svg"
+  }
+}
