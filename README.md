@@ -1,2 +1,4 @@
 # Mirae
-First WordPress, W.I.P.
+First WordPress
+
+W.I.P.
