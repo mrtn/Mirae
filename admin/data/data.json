@@ -1,10 +1,4 @@
 {
-  "default": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "LittleLink",
-    "icon": "images/icons/littlelink.svg"
-  },
   "amazon": {
     "platform": "amazon",
     "class": "button button-amazon",
@@ -35,23 +29,11 @@
     "button": "Listen on Apple Music",
     "icon": "images/icons/apple-music.svg"
   },
-  "apple-music-alt": {
-    "platform": "apple-music-alt",
-    "class": "button button-apple-music-alt",
-    "button": "Listen on Apple Music",
-    "icon": "images/icons/apple-music-alt.svg"
-  },
   "apple-podcasts": {
     "platform": "apple-podcasts",
     "class": "button button-apple-podcasts",
     "button": "Listen on Apple Podcasts",
     "icon": "images/icons/apple-podcasts.svg"
-  },
-  "apple-podcasts-alt": {
-    "platform": "apple-podcasts-alt",
-    "class": "button button-apple-podcasts-alt",
-    "button": "Listen on Apple Podcasts",
-    "icon": "images/icons/apple-podcasts-alt.svg"
   },
   "bandcamp": {
     "platform": "bandcamp",
@@ -70,12 +52,6 @@
     "class": "button button-bluesky",
     "button": "Bluesky",
     "icon": "images/icons/bluesky.svg"
-  },
-  "bluesky-alt": {
-    "platform": "bluesky-alt",
-    "class": "button button-bluesky-alt",
-    "button": "Bluesky",
-    "icon": "images/icons/bluesky-alt.svg"
   },
   "coffee": {
     "platform": "coffee",
@@ -112,12 +88,6 @@
     "class": "button button-discogs",
     "button": "Discogs",
     "icon": "images/icons/discogs.svg"
-  },
-  "discogs-alt": {
-    "platform": "discogs-alt",
-    "class": "button button-discogs-alt",
-    "button": "Discogs",
-    "icon": "images/icons/discogs-alt.svg"
   },
   "discord": {
     "platform": "discord",
@@ -227,12 +197,7 @@
     "button": "Kick",
     "icon": "images/icons/kick.svg"
   },
-  "kick-alt": {
-    "platform": "kick-alt",
-    "class": "button button-kick-alt",
-    "button": "Kick",
-    "icon": "images/icons/kick-alt.svg"
-  },
+
   "kickstarter": {
     "platform": "kickstarter",
     "class": "button button-kickstarter",
@@ -305,12 +270,6 @@
     "button": "Meetup",
     "icon": "images/icons/meetup.svg"
   },
-  "meetup-alt": {
-    "platform": "meetup-alt",
-    "class": "button button-meetup-alt",
-    "button": "Meetup",
-    "icon": "images/icons/meetup-alt.svg"
-  },
   "microsoft": {
     "platform": "microsoft",
     "class": "button button-microsoft",
@@ -377,12 +336,6 @@
     "button": "Signal",
     "icon": "images/icons/signal.svg"
   },
-  "signal-alt": {
-    "platform": "signal-alt",
-    "class": "button button-signal-alt",
-    "button": "Signal",
-    "icon": "images/icons/signal-alt.svg"
-  },
   "slack": {
     "platform": "slack",
     "class": "button button-slack",
@@ -407,12 +360,6 @@
     "button": "Listen on Spotify",
     "icon": "images/icons/spotify.svg"
   },
-  "spotify-alt": {
-    "platform": "spotify-alt",
-    "class": "button button-spotify-alt",
-    "button": "Listen on Spotify",
-    "icon": "images/icons/spotify-alt.svg"
-  },
   "square": {
     "platform": "square",
     "class": "button button-square",
@@ -428,12 +375,6 @@
   "steam": {
     "platform": "steam",
     "class": "button button-steam",
-    "button": "Steam",
-    "icon": "images/icons/steam.svg"
-  },
-  "steam-alt": {
-    "platform": "steam-alt",
-    "class": "button button-steam-alt",
     "button": "Steam",
     "icon": "images/icons/steam.svg"
   },
@@ -539,12 +480,6 @@
     "button": "YouTube",
     "icon": "images/icons/youtube.svg"
   },
-  "yt-alt": {
-    "platform": "yt-alt",
-    "class": "button button-yt-alt",
-    "button": "YouTube",
-    "icon": "images/icons/youtube-alt.svg"
-  },
   "yt-2": {
     "platform": "yt",
     "class": "button button-yt",
@@ -557,106 +492,10 @@
     "button": "Join Zoom Webinar",
     "icon": "images/icons/zoom.svg"
   },
-  "default-2": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Read our blog",
-    "icon": "images/icons/generic-blog.svg"
-  },
-  "default-3": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Event RSVP",
-    "icon": "images/icons/generic-calendar.svg"
-  },
-  "default-4": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Download File",
-    "icon": "images/icons/generic-cloud.svg"
-  },
-  "default-5": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "View the code",
-    "icon": "images/icons/generic-code.svg"
-  },
-  "default-6": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Homelab Setup",
-    "icon": "images/icons/generic-computer.svg"
-  },
-  "default-7": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Email Us",
-    "icon": "images/icons/generic-email.svg"
-  },
-  "default-8": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Email Us",
-    "icon": "images/icons/generic-email-alt.svg"
-  },
-  "default-9": {
+  "default": {
     "platform": "default",
     "class": "button button-default",
     "button": "Visit Homepage",
     "icon": "images/icons/generic-homepage.svg"
-  },
-  "default-10": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Get Directions",
-    "icon": "images/icons/generic-map.svg"
-  },
-  "default-11": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Call Us",
-    "icon": "images/icons/generic-phone.svg"
-  },
-  "default-12": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Leave us a review",
-    "icon": "images/icons/generic-review.svg"
-  },
-  "default-13": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "RSS Subscribe",
-    "icon": "images/icons/generic-rss.svg"
-  },
-  "default-14": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Visit Our Shop",
-    "icon": "images/icons/generic-shopping-bag.svg"
-  },
-  "default-15": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "10% Discount",
-    "icon": "images/icons/generic-shopping-tag.svg"
-  },
-  "default-16": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Send us a message",
-    "icon": "images/icons/generic-sms.svg"
-  },
-  "default-17": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "Visit Website",
-    "icon": "images/icons/generic-website.svg"
-  },
-  "default-18": {
-    "platform": "default",
-    "class": "button button-default",
-    "button": "LittleLink Extended",
-    "icon": "images/icons/littlelink.svg"
   }
 }

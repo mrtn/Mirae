@@ -75,7 +75,6 @@ class Mirae_Admin {
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/mirae-admin.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'bootstrap-css', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), $this->version, 'all' );
-		//wp_enqueue_style( 'bootstrap-table-css', plugin_dir_url( __FILE__ ) . 'css/bootstrap-table.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'bootstrap-icons', plugin_dir_url( __FILE__ ) . 'css/bootstrap-icons.min.css', array(), $this->version, 'all' );
 
 	}

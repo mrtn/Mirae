@@ -28,3 +28,61 @@ td a i  {
   color: crimson;
   text-decoration: underline;
 }
+
+.form-table th {
+  width: 160px;
+  vertical-align: top;
+  padding: 10px 0;
+}
+
+.form-table td {
+  padding: 10px 0;
+}
+
+#add {
+  margin-top: 10px;
+}
+
+#overview.widefat th,
+#overview.widefat td {
+  text-align: left;
+  vertical-align: middle;
+}
+
+#overview.widefat td img.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+a.editBtn,
+a.deleteBtn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a.editBtn:hover {
+  color: #2271b1; /* WordPress blauw */
+  text-decoration: underline;
+}
+
+a.deleteBtn:hover {
+  color: #b32d2e; /* WordPress rood */
+  text-decoration: underline;
+}
+
+.wrap h2 {
+  margin-top: 40px;
+}
+
+#overview th:first-child,
+#overview td:first-child {
+  width: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#save {
+  margin-top: 20px;
+}

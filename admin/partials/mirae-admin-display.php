@@ -1,89 +1,51 @@
-<?php
+<div class="wrap">
+  <h1 class="wp-heading-inline">Mirae</h1>
 
-/**
- * Provide a admin area view for the plugin
- *
- * This file is used to markup the admin-facing aspects of the plugin.
- *
- * @link       https://maartenkumpen.com
- * @since      1.0.0
- *
- * @package    Mirae
- * @subpackage Mirae/admin/partials
- */
-?>
+  <h2>Add new link</h2>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<h1>Mirae</h1>
-
-<table>
+  <table class="form-table">
     <tr>
-        <td>Version</td>
-        <td><?php echo esc_html( MIRAE_VERSION ); ?></td>
+      <th scope="row"><label for="platform">Platform</label></th>
+      <td>
+        <select id="platform" class="regular-text">
+          <option value="">-- Select a platform --</option>
+        </select>
+      </td>
     </tr>
     <tr>
-        <td>Author</td>
-        <td><a href="https://maartenkumpen.com" target="_blank">Maarten Kumpen</a></td>
+      <th scope="row"><label for="url">URL</label></th>
+      <td><input type="url" id="url" class="regular-text" placeholder="https://..." /></td>
     </tr>
     <tr>
-        <td>License</td>
-        <td><a href="https://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GPLv2</a></td>
+      <th scope="row"><label for="buttonText">Button text</label></th>
+      <td><input type="text" id="buttonText" class="regular-text" placeholder="Leave empty to use default" /></td>
     </tr>
-</table>
+    <tr>
+      <th scope="row"></th>
+      <td><button type="button" id="add" class="button button-primary">Add</button></td>
+    </tr>
+  </table>
 
-<table class="table w-75">
-        <tr>
-            <td colspan="2">
-                <select id="platform" class="form-select">
-                    <option value="">-- Select a platform --</option>
-                </select>
-            </td>
-            <td><input type="url" class="form-control needs-validation" id="url" placeholder="Url"></td>
-            <td><input type="text" class="form-control" id="buttonText" placeholder="leave empty for default"></td>
-            <td class="text-end"><button id="add" class="btn btn-primary btn-sm">Add</button></td>
-        </tr>
-</table>
-
-<div class="row align-items-center g-3">
-    <div class="col-auto">
-
-    </div>
-    <div class="col-auto">
-        <label class="visually-hidden" for="url">Url</label>
-        
-    </div>
-    <div class="col-auto">
-        <label class="visually-hidden" for="buttonText">Button text (leave empty to use default)</label>
-        
-    </div>
-
-    <div class="col-auto">
-        
-    </div>
-</div>
-
-<table class="table w-75" id="overview">
+  <h2>Links</h2>
+  <table id="overview" class="widefat fixed striped">
     <thead>
-        <tr>
-            <th data-field="drag" data-formatter="dragFormatter">⇅</th>
-            <th data-field="platform">Platform</th>
-            <th data-field="link">Url</th>
-            <th data-field="buttonText">Button Text</th>
-            <th data-field="editRemove">Edit/Delete</th>
-        </tr>
+      <tr>
+        <th>⇅</th>
+        <th>Platform</th>
+        <th>URL</th>
+        <th>Button text</th>
+        <th>Actions</th>
+      </tr>
     </thead>
     <tbody></tbody>
-</table>
+  </table>
 
-<br />
-<form method="post" action="options.php" class="flex-row align-items-center">
+  <form method="post" action="options.php">
     <?php
-        settings_fields( 'miraeSettings' );
-        do_settings_sections( 'miraeSettings' );
+      settings_fields('miraeSettings');
+      do_settings_sections('miraeSettings');
     ?>
-    <button type="submit" id="save" class="btn btn-primary">Save</button>
-    <br />
-    <br />
-    <br />
-    <textarea id="userdata" rows="20" cols="150" name="userdata"><?php echo get_option('userdata'); ?></textarea>
-</form>
+    <p><button type="submit" id="save" class="button button-primary">Save</button></p>
+    <textarea id="userdata" name="userdata" rows="10" style="display: none;"><?php echo esc_textarea(get_option('userdata')); ?></textarea>
+  </form>
+</div>
