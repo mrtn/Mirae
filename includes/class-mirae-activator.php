@@ -30,7 +30,9 @@ class Mirae_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-
+		if (get_option('userdata') === false) {
+			update_option('userdata', json_encode([]));
+		}
 	}
 
 }

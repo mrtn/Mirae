@@ -52,6 +52,13 @@ class Mirae_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		add_action('admin_notices', function () {
+			$theme = wp_get_theme();
+			if ($theme->get('Name') !== 'Arke') {
+				echo '<div class="notice notice-error"><p><strong>Mirae</strong> requires the <em>Arke</em> theme to be installed and active.</p></div>';
+			}
+		});
+
 	}
 
 	/**

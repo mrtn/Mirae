@@ -56,17 +56,21 @@ td a i  {
   vertical-align: middle;
 }
 
+.saveBtn,
+.cancelBtn,
 a.editBtn,
 a.deleteBtn {
   cursor: pointer;
   text-decoration: none;
 }
 
+a.saveBtn:hover,
 a.editBtn:hover {
   color: #2271b1; /* WordPress blauw */
   text-decoration: underline;
 }
 
+a.cancelBtn:hover,
 a.deleteBtn:hover {
   color: #b32d2e; /* WordPress rood */
   text-decoration: underline;
@@ -85,4 +89,20 @@ a.deleteBtn:hover {
 
 #save {
   margin-top: 20px;
+}
+
+input.is-invalid,
+select.is-invalid {
+  border: 1px solid #dc3232;
+  background-color: #fff0f0;
+}
+
+input:focus.is-invalid,
+select:focus.is-invalid {
+  outline: none;
+  box-shadow: 0 0 0 1px #dc3232;
+}
+
+#userdata {
+  display: none;
 }

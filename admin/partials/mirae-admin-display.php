@@ -1,7 +1,21 @@
+<?php if (isset($_GET['settings-updated']) && $_GET['settings-updated'] === 'true') : ?>
+  <div class="notice notice-success is-dismissible">
+    <p>Settings saved successfully.</p>
+  </div>
+<?php endif; ?>
+
 <div class="wrap">
   <h1 class="wp-heading-inline">Mirae</h1>
 
+  <p class="description">
+    Select a platform, enter your link and (optionally) customize the button text. You can reorder the links by dragging the rows below.
+  </p>
+
   <h2>Add new link</h2>
+  
+  <div id="error-message" class="notice notice-error is-dismissible" style="display: none;">
+    <p>Please fill in all required fields before adding a link.</p>
+  </div>
 
   <table class="form-table">
     <tr>
@@ -18,7 +32,10 @@
     </tr>
     <tr>
       <th scope="row"><label for="buttonText">Button text</label></th>
-      <td><input type="text" id="buttonText" class="regular-text" placeholder="Leave empty to use default" /></td>
+      <td>
+        <input type="text" id="buttonText" class="regular-text" placeholder="Leave empty to use default">
+        <p class="description">If left empty, the default button text from the platform will be used.</p>
+      </td>
     </tr>
     <tr>
       <th scope="row"></th>
@@ -41,11 +58,14 @@
   </table>
 
   <form method="post" action="options.php">
+    <div id="save-message" class="notice notice-success is-dismissible" style="display:none;">
+      <p>Settings saved successfully.</p>
+    </div>
     <?php
       settings_fields('miraeSettings');
       do_settings_sections('miraeSettings');
     ?>
     <p><button type="submit" id="save" class="button button-primary">Save</button></p>
-    <textarea id="userdata" name="userdata" rows="10" style="display: none;"><?php echo esc_textarea(get_option('userdata')); ?></textarea>
+    <textarea id="userdata" name="userdata" rows="10"><?php echo esc_textarea(get_option('userdata')); ?></textarea>
   </form>
 </div>

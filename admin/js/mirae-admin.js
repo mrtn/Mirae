@@ -33,14 +33,40 @@
 		SetSequence();
 		LoadPlatformDropdown();
 
+		// $('#save').on('click', function (e) {
+		// 	const rawData = $('#userdata').val().trim();
+
+		// 	try {
+		// 		const parsed = JSON.parse(rawData);
+
+		// 		if (!Array.isArray(parsed) || parsed.length === 0) {
+		// 		throw new Error('Invalid or empty data');
+		// 		}
+
+		// 		// Alles is ok → verberg fout, toon succes
+		// 		$('#error-message').hide();
+		// 		$('#save-message').fadeIn().delay(3000).fadeOut();
+
+		// 	} catch (err) {
+		// 		e.preventDefault(); // voorkom verzending
+		// 		$('#save-message').hide();
+		// 		$('#error-message').html('<p>Invalid or empty data — please check your links before saving.</p>').fadeIn().delay(4000).fadeOut();
+		// 	}
+		// });
+
+
 		$('#add').click(function () {
-			if (ValidateForm() > 0) return;
+			if (ValidateForm() > 0) {
+				$('#error-message').fadeIn().delay(4000).fadeOut();
+				return;
+			}
+
+			$('#error-message').hide();
 
 			const platform = $('#platform').val();
 			const url = $('#url').val();
 			const buttonText = $('#buttonText').val() || 'Default';
 
-			// Voeg rij toe
 			$('#overview tbody').append(`
 				<tr data-index="999" style="cursor: move;">
 				<td></td>
@@ -53,28 +79,86 @@
 				</tr>
 			`);
 
-			// Verwijder placeholderrij als die bestaat
 			$('#overview .no-records-found').remove();
 
-			// Heractiveer drag en update JSON + sequenties
 			activateDnD();
 			SetSequence();
+
+			$('#platform').val('');
+			$('#url').val('');
+			$('#buttonText').val('');
 		});
 
 		$('#overview').on('click', '.editBtn', function () {
-			const $row = $(this).closest('tr');
-			const values = [];
 
-			$row.find('td').not('.nodrop').each(function () {
-				values.push($(this).text().trim());
+			const $row = $(this).closest('tr');
+			const $cells = $row.find('td');
+
+			// Haal huidige waarden op
+			const platform = $cells.eq(1).text().trim();
+			const link = $cells.eq(2).text().trim();
+			const buttonText = $cells.eq(3).text().trim();
+
+			$row.data('original', {
+				platform,
+				link,
+				buttonText
 			});
 
-			alert("Celwaarden: " + values.join(", "));
+			// Vervang cellen met inputvelden
+			$cells.eq(1).text(platform); 
+			$cells.eq(2).html(`<input type="url" class="regular-text link-input" value="${link}" />`);
+			$cells.eq(3).html(`<input type="text" class="regular-text buttonText-input" value="${buttonText}" />`);
+
+			// Wijzig knoppen
+			$cells.eq(4).html(`<a class="saveBtn">save</a> / <a class="cancelBtn">cancel</a>`);
 		});
+
+		$('#overview').on('click', '.saveBtn', function () {
+			const $row = $(this).closest('tr');
+			const $cells = $row.find('td');
+
+			// Haal waarden uit inputs
+			const platform = $cells.eq(1).text().trim();
+			const link = $row.find('.link-input').val().trim();
+			
+			let buttonText = $row.find('.buttonText-input').val().trim();
+			if (buttonText === '') {
+				buttonText = 'Default';
+			}
+
+			$cells.eq(1).text(platform);
+			$cells.eq(2).text(link);
+			$cells.eq(3).text(buttonText);
+
+			$cells.eq(4).html(`<a class="editBtn">edit</a> / <a class="deleteBtn">delete</a>`);
+
+			SetSequence();
+		});
+
+		$('#overview').on('click', '.cancelBtn', function () {
+			const $row = $(this).closest('tr');
+			const $cells = $row.find('td');
+			const original = $row.data('original');
+
+			if (!original) return;
+
+			// Herstel originele waarden
+			$cells.eq(1).text(original.platform);
+			$cells.eq(2).text(original.link);
+			$cells.eq(3).text(original.buttonText);
+
+			// Herstel actieknoppen
+			$cells.eq(4).html(`<a class="editBtn">edit</a> / <a class="deleteBtn">delete</a>`);
+		});
+
 
 		$('#overview').on('click', '.deleteBtn', function () {
 
-			$(this).closest('tr').remove();
+			if (confirm('Are you sure you want to delete this link?')) {
+				$(this).closest('tr').remove();
+				SetSequence();
+			}
 
 			setTimeout(function () {
 				const rows = document.getElementById('overview').tBodies[0].rows;
@@ -96,8 +180,7 @@
 				}
 
 				$('#userdata').val(JSON.stringify(overviewValues, null, 2));
-			}, 0); // Uitgesteld tot na DOM update
-
+			}, 0);
 		});
 
 		function LoadPlatformDropdown() {
@@ -117,14 +200,19 @@
 			$('#platform').removeClass('is-invalid');
 			$('#url').removeClass('is-invalid');
 
-			var errors = 0;
+			let errors = 0;
+			const url = $('#url').val().trim();
+			const platform = $('#platform :selected').val();
 
-			if ($('#platform :selected').val() === '0') {
+			if (platform === '0' || platform === '') {
 				$('#platform').addClass('is-invalid');
 				errors++;
 			}
 
-			if ($('#url').val() === '') {
+			if (url === '') {
+				$('#url').addClass('is-invalid');
+				errors++;
+			} else if (!/^(https?:\/\/)/i.test(url)) {
 				$('#url').addClass('is-invalid');
 				errors++;
 			}
