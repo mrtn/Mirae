@@ -27,7 +27,7 @@
 
 - WordPress 6.0 or higher
 - PHP 7.4 or higher
-
+- [Miro Theme](https://github.com/mrtn/Miro)
 ---
 
 ## 🎨 Credits
