@@ -220,5 +220,4 @@ class Mirae {
 	public function get_version() {
 		return $this->version;
 	}
-
 }
