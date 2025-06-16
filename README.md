@@ -1,4 +1,4 @@
 # Mirae
-First WordPress
+First WordPress plugin.
 
 W.I.P.
