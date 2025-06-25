@@ -33,6 +33,12 @@
 		SetSequence();
 		LoadPlatformDropdown();
 
+		$('.color-picker').wpColorPicker({
+			defaultColor: false,
+			change: function(event, ui){},
+			clear: function() {},
+		});
+
 		$('#add').click(function () {
 			if (ValidateForm() > 0) {
 				$('#error-message').fadeIn().delay(4000).fadeOut();
@@ -294,7 +300,35 @@
 			});
 		}
 
-		attachMediaUploader('profile_picture', 'upload_profilePicture', 'profile_picture_preview');
+		function hexToRgb(hex) {
+			hex = hex.replace('#', '');
+			if (hex.length === 3) {
+				hex = hex.split('').map(c => c + c).join('');
+			}
+			if (hex.length !== 6) return null;
+
+			return {
+				r: parseInt(hex.substring(0, 2), 16),
+				g: parseInt(hex.substring(2, 4), 16),
+				b: parseInt(hex.substring(4, 6), 16)
+			};
+		}
+
+		function updatePreview() {
+			const hex = jQuery('#container_bg_color').val();
+			const alpha = parseFloat(jQuery('#container_bg_alpha').val()) || 0.8;
+			const rgb = hexToRgb(hex);
+			if (rgb) {
+				const rgba = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
+				jQuery('#container_preview').css('background-color', rgba);
+			}
+		}
+
+		jQuery('#container_bg_color, #container_bg_alpha').on('input change', updatePreview);
+
+		attachMediaUploader('profile_picture', 'upload_profile_picture', 'profile_picture_preview');
 		attachMediaUploader('background_image', 'upload_background_image', 'background_image_preview');
+		attachMediaUploader('overlay_pattern', 'upload_overlay_pattern', 'overlay_pattern_preview');
+
 	});
 })(jQuery);

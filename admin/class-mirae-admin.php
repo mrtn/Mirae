@@ -105,9 +105,10 @@ class Mirae_Admin {
 		 * class.
 		 */
 		wp_enqueue_media();
+		wp_enqueue_style('wp-color-picker');
 		wp_enqueue_script( 'bootstrap-js', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( 'bootstrap-dragndrop', plugin_dir_url( __FILE__ ) . 'js/jquery.tablednd.1.0.5.min.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mirae-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mirae-admin.js', array( 'jquery', 'wp-color-picker' ), $this->version, true );
 	}
 
 	/**
@@ -137,12 +138,16 @@ class Mirae_Admin {
 	 */
 	public function register_mirae_general_settings(){
 		//registers all settings
-		 register_setting( 'mirae_settings', 'display_name' );
-		 register_setting( 'mirae_settings', 'intro_text' );
-		 register_setting( 'mirae_settings', 'profile_picture' );
-		 register_setting( 'mirae_settings', 'background_image' );
+		register_setting('mirae_settings', 'display_name' );
+		register_setting('mirae_settings', 'intro_text' );
+		register_setting('mirae_settings', 'profile_picture' );
+		register_setting('mirae_settings', 'background_image' );
+		register_setting('mirae_settings', 'overlay_pattern');
+		register_setting('mirae_settings', 'container_bg_color');
+		register_setting('mirae_settings', 'text_color');
+		register_setting('mirae_settings', 'container_bg_alpha');
 
-		 register_setting( 'mirae_links', 'link_data' );
+		register_setting( 'mirae_links', 'link_data' );
 	}
 
 }
