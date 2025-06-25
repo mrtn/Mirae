@@ -33,28 +33,6 @@
 		SetSequence();
 		LoadPlatformDropdown();
 
-		// $('#save').on('click', function (e) {
-		// 	const rawData = $('#userdata').val().trim();
-
-		// 	try {
-		// 		const parsed = JSON.parse(rawData);
-
-		// 		if (!Array.isArray(parsed) || parsed.length === 0) {
-		// 		throw new Error('Invalid or empty data');
-		// 		}
-
-		// 		// Alles is ok → verberg fout, toon succes
-		// 		$('#error-message').hide();
-		// 		$('#save-message').fadeIn().delay(3000).fadeOut();
-
-		// 	} catch (err) {
-		// 		e.preventDefault(); // voorkom verzending
-		// 		$('#save-message').hide();
-		// 		$('#error-message').html('<p>Invalid or empty data — please check your links before saving.</p>').fadeIn().delay(4000).fadeOut();
-		// 	}
-		// });
-
-
 		$('#add').click(function () {
 			if (ValidateForm() > 0) {
 				$('#error-message').fadeIn().delay(4000).fadeOut();
@@ -179,7 +157,7 @@
 					}
 				}
 
-				$('#userdata').val(JSON.stringify(overviewValues, null, 2));
+				$('#link_data').val(JSON.stringify(overviewValues, null, 2));
 			}, 0);
 		});
 
@@ -249,11 +227,11 @@
 				});
 			}
 
-			$('#userdata').val(overviewValues.length ? JSON.stringify(overviewValues, null, 2) : "");
+			$('#link_data').val(overviewValues.length ? JSON.stringify(overviewValues, null, 2) : "");
 		}
 
 		function InitializeTable() {
-			const data = JSON.parse($('#userdata').val() || '[]');
+			const data = JSON.parse($('#link_data').val() || '[]');
 			const $tbody = $('#overview tbody');
 			let originalIndex = 0;
 
@@ -288,5 +266,35 @@
 				SetSequence();
 			});
 		}
+
+		function attachMediaUploader(inputId, buttonId, previewId) {
+			let frame;
+			jQuery('#' + buttonId).on('click', function (e) {
+				e.preventDefault();
+				if (frame) {
+					frame.open();
+					return;
+				}
+
+				frame = wp.media({
+					title: 'Select or Upload Image',
+					button: { text: 'Use this image' },
+					multiple: false
+				});
+
+				frame.on('select', function () {
+					const attachment = frame.state().get('selection').first().toJSON();
+					const imageUrl = attachment.url;
+
+					jQuery('#' + inputId).val(imageUrl);
+					jQuery('#' + previewId).html(`<img src="${imageUrl}" alt="Preview" style="max-height:100px; border:1px solid #ccc;" />`);
+					});
+
+				frame.open();
+			});
+		}
+
+		attachMediaUploader('profile_picture', 'upload_profilePicture', 'profile_picture_preview');
+		attachMediaUploader('background_image', 'upload_background_image', 'background_image_preview');
 	});
 })(jQuery);

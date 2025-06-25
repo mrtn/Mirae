@@ -62,10 +62,10 @@
       <p>Settings saved successfully.</p>
     </div>
     <?php
-      settings_fields('miraeSettings');
-      do_settings_sections('miraeSettings');
+      settings_fields('mirae_links');
+      do_settings_sections('mirae_links');
     ?>
     <p><button type="submit" id="save" class="button button-primary">Save</button></p>
-    <textarea id="userdata" name="userdata" rows="10"><?php echo esc_textarea(get_option('userdata')); ?></textarea>
+    <textarea id="link_data" name="link_data" rows="10"><?php echo esc_textarea(get_option('link_data')); ?></textarea>
   </form>
 </div>

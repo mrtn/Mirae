@@ -1,37 +1,62 @@
-<?php
+<div class="wrap">
+    <h1>Mirae – Front page settings</h1>
 
-/**
- * Provide a admin area view for the plugin
- *
- * This file is used to markup the admin-facing aspects of the plugin.
- *
- * @link       https://maartenkumpen.com
- * @since      1.0.0
- *
- * @package    Mirae
- * @subpackage Mirae/admin/partials
- */
-?>
+    <?php if (isset($_GET['settings-updated']) && $_GET['settings-updated']) : ?>
+        <div id="message" class="updated notice is-dismissible">
+            <p><strong>Settings saved successfully.</strong></p>
+        </div>
+    <?php endif; ?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<form method="post" action="options.php">
-    <?php
-        settings_fields( 'miraesettings' );
-        do_settings_sections( 'miraesettings' );
-    ?>
-    <div class="mb-3">
-        <label for="display_name" class="form-label">Dispplay Name</label>
-        <input type="text" name="theemail" value="<?php echo get_option('displayName'); ?>" class="form-control" id="display_name" placeholder="John Doe">
-    </div>
-    <div class="mb-3">
-        <label for="bio_text" class="form-label">Bio/Introduction</label>
-        <textarea class="form-control" name="bio_text" id="bio_text" rows="3"><?php echo get_option('bioText'); ?></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-<ul>
-    <li>Profiel foto</li>
-    <li><s>Display Name</s></li>
-    <li><s>Bio text</s></li>
-    <li>BackgroundImage</li>
-</ul>
+    <form method="post" action="options.php">
+        <?php
+            settings_fields('mirae_settings');
+            do_settings_sections('mirae_settings');
+        ?>
+
+        <table class="form-table">
+            <tr>
+                <th scope="row"><label for="displayName">Display Name</label></th>
+                <td>
+                    <input type="text" id="display_name" name="display_name" value="<?php echo esc_attr(get_option('display_name')); ?>" class="regular-text" />
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row"><label for="introText">Intro Text</label></th>
+                <td>
+                    <textarea id="intro_text" name="intro_text" rows="3" class="large-text"><?php echo esc_textarea(get_option('intro_text')); ?></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row"><label for="profilePicture">Profile Picture</label></th>
+                <td>
+                    <?php $profile_url = esc_url(get_option('profile_picture')); ?>
+                    <input type="text" id="profilePicture" name="profile_picture" value="<?php echo $profile_url; ?>" class="regular-text" />
+                    <input type="button" class="button" id="upload_profile_picture" value="Upload / Select Image" />
+                    <div id="profile_picture_preview" style="margin-top: 10px;">
+                        <?php if ($profile_url): ?>
+                            <img src="<?php echo $profile_url; ?>" alt="Profile preview" style="max-height: 100px; border: 1px solid #ccc;" />
+                        <?php endif; ?>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row"><label for="backgroundImage">Background Image</label></th>
+                <td>
+                    <?php $background_url = esc_url(get_option('background_image')); ?>
+                    <input type="text" id="backgroundImage" name="background_image" value="<?php echo $background_url; ?>" class="regular-text" />
+                    <input type="button" class="button" id="upload_background_image" value="Upload / Select Image" />
+                    <div id="background_image_preview" style="margin-top: 10px;">
+                        <?php if ($background_url): ?>
+                            <img src="<?php echo $background_url; ?>" alt="Background preview" style="max-height: 100px; border: 1px solid #ccc;" />
+                        <?php endif; ?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <?php submit_button(); ?>
+    </form>
+</div>

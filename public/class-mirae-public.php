@@ -107,7 +107,7 @@ class Mirae_Public {
 	//shortcode
 	public function miraedisplaydata(){
 		$platform_data = json_decode($this->getData(), true); // assoc array
-		$display_data = json_decode(get_option('userdata'), true); // assoc array
+		$display_data = json_decode(get_option('link_data'), true); // assoc array
 		
 		if (!is_array($display_data)) {
 			return '<p>Geen links beschikbaar.</p>';

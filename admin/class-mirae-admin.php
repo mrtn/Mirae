@@ -54,7 +54,7 @@ class Mirae_Admin {
 
 		add_action('admin_notices', function () {
 			$theme = wp_get_theme();
-			if ($theme->get('Name') !== 'Arke') {
+			if ($theme->get('Name') !== 'Miro') {
 				echo '<div class="notice notice-error"><p><strong>Mirae</strong> requires the <em>Arke</em> theme to be installed and active.</p></div>';
 			}
 		});
@@ -104,6 +104,7 @@ class Mirae_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+		wp_enqueue_media();
 		wp_enqueue_script( 'bootstrap-js', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( 'bootstrap-dragndrop', plugin_dir_url( __FILE__ ) . 'js/jquery.tablednd.1.0.5.min.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mirae-admin.js', array( 'jquery' ), $this->version, false );
@@ -116,7 +117,7 @@ class Mirae_Admin {
 	 */
 	public function mirae_admin_menu(){
 		add_menu_page('Mirae Settings', 'Mirae', 'manage_options', 'mirae', array($this, 'mirae_admin_page'), 'dashicons-admin-links', 250 );
-		add_submenu_page('mirae', 'Mirae Plugin Settings', 'Settings', 'manage_options', 'mirae/settings', array($this, 'mirae_admin_subpage'), 100);
+		add_submenu_page('mirae', 'Front page Settings', 'Settings', 'manage_options', 'mirae/settings', array($this, 'mirae_admin_subpage'), 100);
 	}
 
 	public function mirae_admin_page(){
@@ -136,12 +137,12 @@ class Mirae_Admin {
 	 */
 	public function register_mirae_general_settings(){
 		//registers all settings
-		 register_setting( 'miraeSettings', 'displayName' );
-		 register_setting( 'miraeSettings', 'bioText' );
-		 register_setting( 'miraeSettings', 'profilePicture' );
-		 register_setting( 'miraeSettings', 'backgroundImage' );
+		 register_setting( 'mirae_settings', 'display_name' );
+		 register_setting( 'mirae_settings', 'intro_text' );
+		 register_setting( 'mirae_settings', 'profile_picture' );
+		 register_setting( 'mirae_settings', 'background_image' );
 
-		 register_setting( 'miraeSettings', 'userdata' );
+		 register_setting( 'mirae_links', 'link_data' );
 	}
 
 }

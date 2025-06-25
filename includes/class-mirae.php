@@ -178,7 +178,7 @@ class Mirae {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 		//Add shortcode
-		$this->loader->add_shortcode('miraedata', $plugin_public, 'miraedisplaydata');
+		$this->loader->add_shortcode('mirae', $plugin_public, 'miraedisplaydata');
 	}
  
 	/**
