@@ -1,0 +1,38 @@
+name: Create Release and ZIP
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build-and-release:
+    name: Build ZIP and create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get plugin version from mirae.php
+        id: get_version
+        run: |
+          version=$(grep -oP 'Version:\s*\K[\d.]+' mirae.php)
+          echo "VERSION=$version" >> $GITHUB_OUTPUT
+
+      - name: Create ZIP file of plugin
+        run: |
+          mkdir -p build/mirae
+          rsync -av --exclude=.git --exclude=build ./ build/mirae/
+          cd build
+          zip -r mirae-v${{ steps.get_version.outputs.VERSION }}.zip mirae
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.get_version.outputs.VERSION }}
+          name: v${{ steps.get_version.outputs.VERSION }}
+          body: "Automated release from GitHub Actions"
+          files: build/mirae-v${{ steps.get_version.outputs.VERSION }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
