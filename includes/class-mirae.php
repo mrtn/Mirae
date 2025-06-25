@@ -1,5 +1,7 @@
 <?php
 
+require_once plugin_dir_path( __FILE__ ) . 'class-mirae-github-updater.php';
+
 /**
  * The file that defines the core plugin class
  *
@@ -78,6 +80,8 @@ class Mirae {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+
+		new Mirae_GitHub_Updater( plugin_dir_path( __FILE__ ) . '../mirae.php' );
 	}
 
 	/**
