@@ -16,7 +16,7 @@
  * Plugin Name:       Mirae
  * Plugin URI:        https://maartenkumpen.com
  * Description:       Mirae lets you build a customizable Linktree-style profile with platform buttons, icons, and custom text. All managed from your WordPress admin.
- * Version:           0.0.1
+ * Version:           1.0.1
  * Author:            Maarten Kumpen
  * Author URI:        https://maartenkumpen.com/
  * License:           GPL-2.0+
