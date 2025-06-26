@@ -29,11 +29,10 @@ jobs:
           echo "tag=$(git describe --tags --abbrev=0 HEAD^)" >> $GITHUB_OUTPUT
 
       - name: Generate changelog from commits
-        id: generate_changelog
         run: |
-          echo "changelog<<EOF" >> $GITHUB_OUTPUT
-          git log ${{ steps.get_previous_tag.outputs.tag }}..HEAD --pretty=format:"- %s"
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo "### Wijzigingen in versie v${VERSION}" > CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s" >> CHANGELOG.md
 
       - name: Create ZIP file of plugin
         run: |
@@ -47,7 +46,7 @@ jobs:
         with:
           tag_name: v${{ env.VERSION }}
           name: v${{ env.VERSION }}
-          body: ${{ steps.generate_changelog.outputs.changelog }}
+          body_path: CHANGELOG.md
           files: build/mirae-v${{ env.VERSION }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
