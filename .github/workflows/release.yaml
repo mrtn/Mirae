@@ -23,6 +23,18 @@ jobs:
           version=$(grep -oP 'Version:\s*\K[\d.]+' mirae.php)
           echo "VERSION=$version" >> $GITHUB_ENV
 
+      - name: Get previous tag
+        id: get_previous_tag
+        run: |
+          echo "tag=$(git describe --tags --abbrev=0 HEAD^)" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog from commits
+        id: generate_changelog
+        run: |
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          git log ${{ steps.get_previous_tag.outputs.tag }}..HEAD --pretty=format:"- %s" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Create ZIP file of plugin
         run: |
           mkdir -p build/mirae
@@ -35,7 +47,7 @@ jobs:
         with:
           tag_name: v${{ env.VERSION }}
           name: v${{ env.VERSION }}
-          body: "Automated release from GitHub Actions"
+          body: ${{ steps.generate_changelog.outputs.changelog }}
           files: build/mirae-v${{ env.VERSION }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
