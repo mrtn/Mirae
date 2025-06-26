@@ -81,7 +81,7 @@ class Mirae {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
-		new Mirae_GitHub_Updater( plugin_dir_path( __FILE__ ) . '../mirae.php' );
+		new Mirae_GitHub_Updater( WP_PLUGIN_DIR . '/mirae/mirae.php' );
 	}
 
 	/**
