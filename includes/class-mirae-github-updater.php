@@ -1,7 +1,7 @@
 <?php
 if ( ! class_exists( 'Mirae_GitHub_Updater' ) ) {
 	class Mirae_GitHub_Updater {
-
+	
 		private $plugin_file;
 		private $plugin_data;
 		private $github_api_url = 'https://api.github.com/repos/';
@@ -28,6 +28,7 @@ if ( ! class_exists( 'Mirae_GitHub_Updater' ) ) {
 		}
 
 		public function check_for_update( $transient ) {
+
 			if ( empty( $transient->checked ) ) return $transient;
 
 			$this->plugin_data = get_plugin_data( $this->plugin_file );
@@ -41,14 +42,15 @@ if ( ! class_exists( 'Mirae_GitHub_Updater' ) ) {
 			$remote_version = trim( $matches[1] );
 			$current_version = $this->plugin_data['Version'];
 
+
 			if ( version_compare( $remote_version, $current_version, '>' ) ) {
-				$plugin_slug = plugin_basename( $this->plugin_file );
+				$plugin_slug = plugin_basename( realpath( $this->plugin_file ) );
 				$transient->response[$plugin_slug] = (object) array(
 					'slug'        => $this->repository,
 					'plugin'      => $plugin_slug,
 					'new_version' => $remote_version,
 					'url'         => "https://github.com/{$this->username}/{$this->repository}",
-					'package'     => "https://github.com/{$this->username}/{$this->repository}/archive/refs/heads/{$this->branch}.zip",
+					'package' => "https://github.com/{$this->username}/{$this->repository}/releases/download/v{$remote_version}/mirae-v{$remote_version}.zip",
 				);
 			}
 
@@ -68,8 +70,40 @@ if ( ! class_exists( 'Mirae_GitHub_Updater' ) ) {
 				'homepage'    => $this->plugin_data['PluginURI'],
 				'sections'    => array(
 					'description' => $this->plugin_data['Description'],
+					'changelog' => $this->get_latest_release_body(),
 				),
 			);
+		}
+
+		
+		private function get_latest_release() {
+				$url = "https://api.github.com/repos/{$this->username}/{$this->repository}/releases/latest";
+				$response = wp_remote_get( $url, array(
+				'headers' => array( 'Accept' => 'application/vnd.github.v3+json' ),
+				)
+			);
+		
+			if ( is_wp_error( $response ) ) return false;
+		
+			$body = json_decode( wp_remote_retrieve_body( $response ), true );
+			return $body['body'] ?? '';
+		}
+	
+		private function get_latest_release_body() {
+			$url = "https://api.github.com/repos/{$this->username}/{$this->repository}/releases/latest";
+			$response = wp_remote_get( $url, array(
+				'headers' => array(
+					'Accept' => 'application/vnd.github.v3+json',
+					'User-Agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' )
+				),
+			) );
+		
+			if ( is_wp_error( $response ) ) {
+				return 'Kon changelog niet ophalen.';
+			}
+		
+			$body = json_decode( wp_remote_retrieve_body( $response ), true );
+			return isset( $body['body'] ) ? nl2br( esc_html( $body['body'] ) ) : 'Geen changelog beschikbaar.';
 		}
 	}
 }

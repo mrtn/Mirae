@@ -168,7 +168,7 @@
 		});
 
 		function LoadPlatformDropdown() {
-			$.getJSON('https://mirae.dev/wp-content/plugins/mirae/admin/data/data.json', function (data) {
+			$.getJSON('/wp-content/plugins/mirae/admin/data/data.json', function (data) {
 				const $dropdown = $('#platform');
 				$dropdown.empty();
 
