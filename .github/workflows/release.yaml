@@ -32,7 +32,7 @@ jobs:
         id: generate_changelog
         run: |
           echo "changelog<<EOF" >> $GITHUB_OUTPUT
-          git log ${{ steps.get_previous_tag.outputs.tag }}..HEAD --pretty=format:"- %s" >> $GITHUB_OUTPUT
+          git log ${{ steps.get_previous_tag.outputs.tag }}..HEAD --pretty=format:"- %s"
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Create ZIP file of plugin
