@@ -40,7 +40,7 @@ jobs:
       - name: Create ZIP file of plugin
         run: |
           mkdir -p build/mirae
-          rsync -av --exclude=.git --exclude=build ./ build/mirae/
+          rsync -av --exclude='.git' --exclude='.github' --exclude='build' --exclude='.gitignore' ./ build/mirae/
           cd build
           zip -r mirae-v${VERSION}.zip mirae
 
