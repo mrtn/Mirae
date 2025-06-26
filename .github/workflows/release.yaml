@@ -1,5 +1,8 @@
 name: Create Release and ZIP
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -18,21 +21,32 @@ jobs:
         id: get_version
         run: |
           version=$(grep -oP 'Version:\s*\K[\d.]+' mirae.php)
-          echo "VERSION=$version" >> $GITHUB_OUTPUT
+          echo "VERSION=$version" >> $GITHUB_ENV
+
+      - name: Get previous tag
+        id: get_previous_tag
+        run: |
+          echo "tag=$(git describe --tags --abbrev=0 HEAD^)" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog from commits
+        run: |
+          echo "### Wijzigingen in versie v${VERSION}" > CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s" >> CHANGELOG.md
 
       - name: Create ZIP file of plugin
         run: |
           mkdir -p build/mirae
           rsync -av --exclude=.git --exclude=build ./ build/mirae/
           cd build
-          zip -r mirae-v${{ steps.get_version.outputs.VERSION }}.zip mirae
+          zip -r mirae-v${VERSION}.zip mirae
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ steps.get_version.outputs.VERSION }}
-          name: v${{ steps.get_version.outputs.VERSION }}
-          body: "Automated release from GitHub Actions"
-          files: build/mirae-v${{ steps.get_version.outputs.VERSION }}.zip
+          tag_name: v${{ env.VERSION }}
+          name: v${{ env.VERSION }}
+          body_path: CHANGELOG.md
+          files: build/mirae-v${{ env.VERSION }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
