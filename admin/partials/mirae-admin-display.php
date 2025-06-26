@@ -66,6 +66,6 @@
       do_settings_sections('mirae_links');
     ?>
     <p><button type="submit" id="save" class="button button-primary">Save</button></p>
-    <textarea id="link_data" name="link_data" rows="10"><?php echo esc_textarea(get_option('link_data')); ?></textarea>
+    <textarea id="link_data" name="link_data" rows="10" ><?php echo esc_textarea(get_option('link_data')); ?></textarea>
   </form>
 </div>

@@ -106,3 +106,7 @@ select:focus.is-invalid {
 #userdata {
   display: none;
 }
+
+#link_data {
+  display: none !important;
+}
