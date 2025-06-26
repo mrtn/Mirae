@@ -3,9 +3,6 @@ name: Create Release and ZIP
 permissions:
   contents: write
 
-permissions:
-  contents: write
-
 on:
   push:
     branches:
