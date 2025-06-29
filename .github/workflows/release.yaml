@@ -30,7 +30,7 @@ jobs:
 
       - name: Generate changelog from commits
         run: |
-          echo "### Wijzigingen in versie v${VERSION}" > CHANGELOG.md
+          echo "### Changes in version v${VERSION}" > CHANGELOG.md
           echo "" >> CHANGELOG.md
           git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s" >> CHANGELOG.md
 
