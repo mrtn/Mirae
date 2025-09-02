@@ -1,4 +1,4 @@
-# Mirae (WIP)
+# Mirae
 
 **Mirae** is a WordPress plugin that lets you create a simple Linktree-style profile page. Users can manage their social or personal links from the WordPress admin and display them beautifully on the front-end.
 
