@@ -103,10 +103,6 @@ select:focus.is-invalid {
   box-shadow: 0 0 0 1px #dc3232;
 }
 
-#userdata {
-  display: none;
-}
-
 #link_data {
   display: none !important;
 }

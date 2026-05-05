@@ -1,0 +1,30 @@
+{
+	"name": "mrtn/mirae",
+	"description": "Mirae — a Linktree-style profile builder for WordPress.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Maarten Kumpen",
+			"email": "maarten@mrtn.be",
+			"homepage": "https://maartenkumpen.com"
+		}
+	],
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9.6",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"wp-coding-standards/wpcs": "^3.1",
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
+	},
+	"scripts": {
+		"test": "phpunit --bootstrap tests/bootstrap.php tests"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}

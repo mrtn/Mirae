@@ -81,58 +81,56 @@ class Mirae {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
-		new Mirae_GitHub_Updater( WP_PLUGIN_DIR . '/mirae/mirae.php' );
+		add_action( 'plugins_loaded', array( $this, 'maybe_run_migrations' ) );
+
+		// Skip the GitHub-hosted self-updater on builds that ship through the
+		// WordPress.org plugin directory, where WP handles updates itself and
+		// external service calls are not allowed.
+		if ( ! defined( 'MIRAE_DISABLE_GITHUB_UPDATER' ) || ! MIRAE_DISABLE_GITHUB_UPDATER ) {
+			new Mirae_GitHub_Updater( plugin_dir_path( __DIR__ ) . 'mirae.php' );
+		}
+	}
+
+	/**
+	 * Run activation-style migrations when the stored version is older than the current one.
+	 * Covers WP auto-updates where register_activation_hook does not fire.
+	 */
+	public function maybe_run_migrations() {
+		$stored = get_option( 'mirae_db_version' );
+		if ( $stored === $this->version ) {
+			return;
+		}
+
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-mirae-activator.php';
+		Mirae_Activator::activate();
+
+		update_option( 'mirae_db_version', $this->version );
 	}
 
 	/**
 	 * Load the required dependencies for this plugin.
-	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - Mirae_Loader. Orchestrates the hooks of the plugin.
-	 * - Mirae_i18n. Defines internationalization functionality.
-	 * - Mirae_Admin. Defines all hooks for the admin area.
-	 * - Mirae_Public. Defines all hooks for the public side of the site.
-	 *
-	 * Create an instance of the loader which will be used to register the hooks
-	 * with WordPress.
 	 *
 	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
 
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mirae-loader.php';
+		$base = plugin_dir_path( __DIR__ );
 
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mirae-i18n.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-mirae-admin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-mirae-public.php';
+		require_once $base . 'includes/class-mirae-loader.php';
+		require_once $base . 'includes/class-mirae-i18n.php';
+		require_once $base . 'includes/class-mirae-data.php';
+		require_once $base . 'includes/class-mirae-util.php';
+		require_once $base . 'admin/class-mirae-admin.php';
+		require_once $base . 'public/class-mirae-public.php';
 
 		$this->loader = new Mirae_Loader();
-
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Mirae_i18n class in order to set the domain and to register the hook
+	 * Uses the Mirae_I18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -140,10 +138,9 @@ class Mirae {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Mirae_i18n();
+		$plugin_i18n = new Mirae_I18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
 	}
 
 	/**
@@ -159,12 +156,9 @@ class Mirae {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
-		//Add admin menu items
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'mirae_admin_menu' );
-
-		//register our general settings
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_mirae_general_settings' );
+		$this->loader->add_action( 'admin_notices', $plugin_admin, 'maybe_render_theme_warning' );
 	}
 
 	/**
@@ -179,12 +173,10 @@ class Mirae {
 		$plugin_public = new Mirae_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-		//Add shortcode
-		$this->loader->add_shortcode('mirae', $plugin_public, 'miraedisplaydata');
+		$this->loader->add_shortcode( 'mirae', $plugin_public, 'miraedisplaydata' );
 	}
- 
+
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *

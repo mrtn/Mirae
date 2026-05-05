@@ -16,13 +16,16 @@
  * Plugin Name:       Mirae
  * Plugin URI:        https://github.com/mrtn/Mirae
  * Description:       Mirae lets you build a customizable Linktree-style profile with platform buttons, icons, and custom text. All managed from your WordPress admin.
- * Version:           1.0.7
+ * Version:           1.2.0
+ * Requires at least: 6.0
+ * Requires PHP:      7.4
  * Author:            Maarten Kumpen
  * Author URI:        https://maartenkumpen.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       mirae
  * Domain Path:       /languages
+ * Update URI:        https://github.com/mrtn/Mirae
  */
 
 // If this file is called directly, abort.
@@ -35,7 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MIRAE_VERSION', '1.0.7' );
+define( 'MIRAE_VERSION', '1.2.0' );
 
 /**
  * The code that runs during plugin activation.
@@ -77,6 +80,5 @@ function run_mirae() {
 
 	$plugin = new Mirae();
 	$plugin->run();
-
 }
 run_mirae();

@@ -24,7 +24,7 @@
  * @subpackage Mirae/includes
  * @author     Maarten Kumpen <maarten@mrtn.be>
  */
-class Mirae_i18n {
+class Mirae_I18n {
 
 
 	/**
@@ -37,11 +37,7 @@ class Mirae_i18n {
 		load_plugin_textdomain(
 			'mirae',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname( plugin_basename( __FILE__ ), 2 ) . '/languages/'
 		);
-
 	}
-
-
-
 }
